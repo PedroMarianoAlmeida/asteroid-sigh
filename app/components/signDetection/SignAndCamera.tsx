@@ -1,7 +1,12 @@
 "use client";
+import Webcam from "react-webcam";
 
 const SignAndCamera = () => {
-  return <h1>Sign and Camera</h1>;
+  return (
+    <>
+      <Webcam />
+    </>
+  );
 };
 
 export default SignAndCamera;
