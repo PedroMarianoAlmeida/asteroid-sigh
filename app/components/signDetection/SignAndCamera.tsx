@@ -6,6 +6,9 @@ import Webcam from "react-webcam";
 import * as handpose from "@tensorflow-models/handpose";
 import "@tensorflow/tfjs-backend-webgl";
 
+// @ts-ignore
+import * as fp from "fingerpose";
+
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
 
@@ -39,6 +42,20 @@ const SignAndCamera = () => {
       //Make detections
       const hand = await net.estimateHands(video);
       //console.log(hand);
+
+      if (hand.length > 0) {
+        const GE = new fp.GestureEstimator([
+          fp.Gestures.VictoryGesture,
+          fp.Gestures.ThumbsUpGesture,
+        ]);
+
+        const minimumConfidence = 8;
+        const { gestures } = await GE.estimate(
+          hand[0].landmarks,
+          minimumConfidence
+        );
+        if (gestures.length) console.log(gestures);
+      }
     }
   };
 
