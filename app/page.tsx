@@ -1,5 +1,5 @@
-import Image from "next/image";
 import SignAndCamera from "./components/signDetection/SignAndCamera";
+export const fetchCache = "force-no-store";
 
 export default function Home() {
   return (
