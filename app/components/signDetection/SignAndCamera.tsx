@@ -10,6 +10,7 @@ import "@tensorflow/tfjs-backend-webgl";
 import * as fp from "fingerpose";
 
 import LetterW from "../utils/customGestures/letterW";
+import React from "react";
 
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
