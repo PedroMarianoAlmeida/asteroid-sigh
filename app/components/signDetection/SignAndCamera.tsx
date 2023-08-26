@@ -9,6 +9,8 @@ import "@tensorflow/tfjs-backend-webgl";
 // @ts-ignore
 import * as fp from "fingerpose";
 
+import LetterW from "../utils/customGestures/letterW";
+
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
 
@@ -47,6 +49,7 @@ const SignAndCamera = () => {
         const GE = new fp.GestureEstimator([
           fp.Gestures.VictoryGesture,
           fp.Gestures.ThumbsUpGesture,
+          LetterW,
         ]);
 
         const minimumConfidence = 8;
