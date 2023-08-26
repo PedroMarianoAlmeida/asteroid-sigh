@@ -9,7 +9,7 @@ import "@tensorflow/tfjs-backend-webgl";
 // @ts-ignore
 import * as fp from "fingerpose";
 
-import LetterW from "../utils/customGestures/letterW";
+import LetterW from "@utils/customGestures/letterW";
 import React from "react";
 
 const SignAndCamera = () => {
