@@ -11,11 +11,12 @@ import useGesture from "@hooks/useGesture";
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
 
-  const { isFingerPoseLoaded, isCameraLoaded, error, gesture } = useGesture({
-    refCam: webcamRef,
-  });
+  const { isFingerPoseLoaded, isCameraLoaded, error, possibleGestures } =
+    useGesture({
+      refCam: webcamRef,
+    });
 
-  console.log({ isFingerPoseLoaded, isCameraLoaded, error, gesture });
+  console.log({ isFingerPoseLoaded, isCameraLoaded, error, possibleGestures });
 
   return (
     <>

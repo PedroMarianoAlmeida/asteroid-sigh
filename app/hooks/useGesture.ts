@@ -16,7 +16,7 @@ interface useGestureReturn {
   isFingerPoseLoaded: boolean;
   isCameraLoaded: boolean;
   error: string | null;
-  gesture: string | null;
+  possibleGestures: Array<string> | null;
 }
 
 interface cameraSetupSuccess {
@@ -68,10 +68,13 @@ const cameraSetup = (refCam: useGestureProps["refCam"]): cameraSetupReturn => {
 };
 
 const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
-  const [isFingerPoseLoaded, setIsFingerPoseLoaded] = useState(false);
-  const [isCameraLoaded, setIsCameraLoaded] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [gesture, setGesture] = useState<string | null>(null);
+  const [isFingerPoseLoaded, setIsFingerPoseLoaded] =
+    useState<useGestureReturn["isFingerPoseLoaded"]>(false);
+  const [isCameraLoaded, setIsCameraLoaded] =
+    useState<useGestureReturn["isCameraLoaded"]>(false);
+  const [error, setError] = useState<useGestureReturn["error"]>(null);
+  const [possibleGestures, setPossibleGestures] =
+    useState<useGestureReturn["possibleGestures"]>(null);
 
   const detect = async (net: handpose.HandPose) => {
     const webcam = cameraSetup(refCam);
@@ -94,17 +97,12 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
           gestures: { length: gestureLength },
         } = await GE.estimate(hand[0].landmarks, minimumConfidence);
         if (gestureLength > 0) {
-          if (gestureLength === 1) {
-            setGesture(gestures[0].name);
-          } else {
-            const highScoreGesture = gestures.reduce(
-              (prev: IGesture, current: IGesture) =>
-                prev.confidence > current.confidence ? prev : current
-            );
-            setGesture(highScoreGesture.name);
-          }
+          const possibleGesturesNames = gestures.map(
+            (gesture: IGesture) => gesture.name
+          );
+          setPossibleGestures(possibleGesturesNames);
         } else {
-          setGesture(null);
+          setPossibleGestures(null);
         }
       }
     } else {
@@ -134,7 +132,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
     isFingerPoseLoaded,
     isCameraLoaded,
     error,
-    gesture,
+    possibleGestures,
   };
 };
 
