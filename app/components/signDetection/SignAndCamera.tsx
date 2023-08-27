@@ -7,6 +7,7 @@ import "@tensorflow/tfjs-backend-webgl";
 import React from "react";
 
 import useGesture from "@hooks/useGesture";
+import SignDetectionSetupIndicator from "./SignDetectionSetupIndicator";
 
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
@@ -20,6 +21,11 @@ const SignAndCamera = () => {
 
   return (
     <>
+      <SignDetectionSetupIndicator
+        isFingerPoseLoaded={isFingerPoseLoaded}
+        isCameraLoaded={isCameraLoaded}
+        error={error}
+      />
       <Webcam ref={webcamRef} />
     </>
   );

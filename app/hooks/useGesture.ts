@@ -12,7 +12,7 @@ interface useGestureProps {
   refCam: RefObject<Webcam> | null;
 }
 
-interface useGestureReturn {
+export interface useGestureReturn {
   isFingerPoseLoaded: boolean;
   isCameraLoaded: boolean;
   error: string | null;
