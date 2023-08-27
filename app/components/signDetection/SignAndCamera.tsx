@@ -8,6 +8,7 @@ import React from "react";
 
 import useGesture from "@hooks/useGesture";
 import SignDetectionSetupIndicator from "./SignDetectionSetupIndicator";
+import PossibleSignIndicator from "./PossibleSignIndicator";
 
 const SignAndCamera = () => {
   const webcamRef = useRef<Webcam>(null);
@@ -17,8 +18,6 @@ const SignAndCamera = () => {
       refCam: webcamRef,
     });
 
-  console.log({ isFingerPoseLoaded, isCameraLoaded, error, possibleGestures });
-
   return (
     <>
       <SignDetectionSetupIndicator
@@ -27,6 +26,7 @@ const SignAndCamera = () => {
         error={error}
       />
       <Webcam ref={webcamRef} />
+      <PossibleSignIndicator possibleGestures={possibleGestures} />
     </>
   );
 };
