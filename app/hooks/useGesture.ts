@@ -80,6 +80,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
     const webcam = cameraSetup(refCam);
     if (webcam.isSetupOk) {
       setIsCameraLoaded(true);
+      setError(null);
       //Set video properties
       let { video, videoWidth, videoHeight, width, height } = webcam;
       width = videoWidth;
