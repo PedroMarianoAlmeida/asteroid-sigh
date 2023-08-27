@@ -3,9 +3,10 @@ import { RefObject, useEffect, useState } from "react";
 import * as handpose from "@tensorflow-models/handpose";
 // @ts-ignore
 import * as fp from "fingerpose";
-import LetterW from "@utils/customGestures/letterW";
 
 import Webcam from "react-webcam";
+
+import signLetters from "@utils/customGestures/signLetters";
 
 interface useGestureProps {
   refCam: RefObject<Webcam> | null;
@@ -85,11 +86,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
       const hand = await net.estimateHands(video);
 
       if (hand.length > 0) {
-        const GE = new fp.GestureEstimator([
-          fp.Gestures.VictoryGesture,
-          fp.Gestures.ThumbsUpGesture,
-          LetterW,
-        ]);
+        const GE = new fp.GestureEstimator(signLetters);
 
         const minimumConfidence = 8;
         const {
@@ -106,8 +103,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
             );
             setGesture(highScoreGesture.name);
           }
-        }
-        else {
+        } else {
           setGesture(null);
         }
       }
