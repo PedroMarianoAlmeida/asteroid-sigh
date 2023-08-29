@@ -1,4 +1,4 @@
-import SignAndCamera from "./components/signDetection/SignAndCamera";
+import GameStructure from "./components/GameStructure/GameStructure";
 export const fetchCache = "force-no-store";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
           Github
         </a>
       </p>
-      <SignAndCamera />
+      <GameStructure />
     </main>
   );
 }
