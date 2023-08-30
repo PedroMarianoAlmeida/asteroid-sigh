@@ -4,8 +4,9 @@ const getRandomValueFromArray = (array: string[]) => {
 };
 
 export const generateGameLetter = () => {
-  const vowel = ["a", "e", "i", "o", "u"];
-  const possibleLetters = [...vowel];
+  //const vowel = ["a", "e", "i", "o", "u"];
+  const letterAlwaysShowUpInPossibilities = ["y", "o", "u", "t"];
+  const possibleLetters = [...letterAlwaysShowUpInPossibilities];
 
   return getRandomValueFromArray(possibleLetters);
 };
