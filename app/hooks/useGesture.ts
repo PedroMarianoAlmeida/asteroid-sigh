@@ -12,11 +12,13 @@ interface useGestureProps {
   refCam: RefObject<Webcam> | null;
 }
 
+export type possibleGestures = Array<string>;
+
 export interface useGestureReturn {
   isFingerPoseLoaded: boolean;
   isCameraLoaded: boolean;
   error: string | null;
-  possibleGestures: Array<string> | null;
+  possibleGestures: possibleGestures;
 }
 
 interface cameraSetupSuccess {
@@ -74,7 +76,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
     useState<useGestureReturn["isCameraLoaded"]>(false);
   const [error, setError] = useState<useGestureReturn["error"]>(null);
   const [possibleGestures, setPossibleGestures] =
-    useState<useGestureReturn["possibleGestures"]>(null);
+    useState<useGestureReturn["possibleGestures"]>([]);
 
   const detect = async (net: handpose.HandPose) => {
     const webcam = cameraSetup(refCam);
@@ -103,7 +105,7 @@ const useGesture = ({ refCam }: useGestureProps): useGestureReturn => {
           );
           setPossibleGestures(possibleGesturesNames);
         } else {
-          setPossibleGestures(null);
+          setPossibleGestures([]);
         }
       }
     } else {

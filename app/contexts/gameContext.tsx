@@ -6,7 +6,7 @@ import useGameLogic, { useGameLogicReturn } from "@hooks/useGameLogic";
 interface GameContextProviderProps extends useGameLogicReturn {}
 
 export const GameContext = createContext<GameContextProviderProps>({
-  userPossibleSign: null,
+  userPossibleSign: [],
   setUserPossibleSign: () => {},
   gameLettersToGuess: [],
 });

@@ -1,23 +1,21 @@
 import { useState } from "react";
-import { useGestureReturn } from "@hooks/useGesture";
+import { possibleGestures } from "@hooks/useGesture";
 
 interface useGameLogic {}
 
 export interface useGameLogicReturn {
-  userPossibleSign: useGestureReturn["possibleGestures"];
-  setUserPossibleSign: (
-    possibleSign: useGestureReturn["possibleGestures"]
-  ) => void;
-  gameLettersToGuess: useGestureReturn["possibleGestures"];
+  userPossibleSign: possibleGestures;
+  setUserPossibleSign: (possibleSign: possibleGestures) => void;
+  gameLettersToGuess: possibleGestures;
 }
 
 const useGameLogic = (): useGameLogicReturn => {
-  const [userPossibleSign, setUserPossibleSign] =
-    useState<useGestureReturn["possibleGestures"]>(null);
+  const [userPossibleSign, setUserPossibleSign] = useState<possibleGestures>(
+    []
+  );
 
-  const [gameLettersToGuess, setGameLettersToGuess] = useState<
-    useGestureReturn["possibleGestures"]
-  >([]);
+  const [gameLettersToGuess, setGameLettersToGuess] =
+    useState<possibleGestures>([]);
 
   return {
     userPossibleSign,

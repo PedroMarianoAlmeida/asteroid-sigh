@@ -1,7 +1,7 @@
-import { useGestureReturn } from "@hooks/useGesture";
+import { possibleGestures } from "@hooks/useGesture";
 
 interface PossibleSignIndicatorProps {
-  possibleGestures: useGestureReturn["possibleGestures"];
+  possibleGestures: possibleGestures;
 }
 
 const PossibleSignIndicator = ({
