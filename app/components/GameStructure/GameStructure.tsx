@@ -1,12 +1,13 @@
+import { GameContextProvider } from "@/app/contexts/gameContext";
 import LettersToGuess from "./lettersToGuess/LettersToGuess";
 import SignAndCamera from "./signDetection/SignAndCamera";
 
 const GameStructure = () => {
   return (
-    <div>
+    <GameContextProvider>
       <LettersToGuess />
       <SignAndCamera />
-    </div>
+    </GameContextProvider>
   );
 };
 
