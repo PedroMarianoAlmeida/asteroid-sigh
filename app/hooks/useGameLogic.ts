@@ -19,7 +19,7 @@ const useGameLogic = (): useGameLogicReturn => {
     useState<possibleGestures>([]);
 
   useEffect(() => {
-    if (userPossibleSign.length === 0)
+    if (gameLettersToGuess.length === 0)
       setGameLettersToGuess([generateGameLetter()]);
   }, [gameLettersToGuess]);
 
