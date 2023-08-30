@@ -9,3 +9,8 @@ export const generateGameLetter = () => {
 
   return getRandomValueFromArray(possibleLetters);
 };
+
+export const removeLetterFromArray = (letter: string, array: string[]) => {
+  const newArray = array.filter((item) => item !== letter);
+  return newArray;
+};

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { possibleGestures } from "@hooks/useGesture";
-import { generateGameLetter } from "@utils/gameLogicHelpers";
+import { generateGameLetter , removeLetterFromArray} from "@utils/gameLogicHelpers";
 
 interface useGameLogic {}
 
@@ -22,6 +22,14 @@ const useGameLogic = (): useGameLogicReturn => {
     if (userPossibleSign.length === 0)
       setGameLettersToGuess([generateGameLetter()]);
   }, [gameLettersToGuess]);
+
+  useEffect(() => {
+    userPossibleSign.map((sign) => {
+      if (gameLettersToGuess.includes(sign)) {
+        setGameLettersToGuess(removeLetterFromArray(sign, gameLettersToGuess));
+      }
+    });
+  }, [gameLettersToGuess, userPossibleSign]);
 
   return {
     userPossibleSign,
