@@ -1,6 +1,13 @@
-const LettersToGuess = () => {
+"use client";
 
-    return <p>Letter to guess</p>
-}
+import { useContext } from "react";
+
+import { GameContext } from "@/app/contexts/gameContext";
+
+const LettersToGuess = () => {
+  const { gameLettersToGuess } = useContext(GameContext);
+
+  return <p>Letter to guess : {gameLettersToGuess}</p>;
+};
 
 export default LettersToGuess;

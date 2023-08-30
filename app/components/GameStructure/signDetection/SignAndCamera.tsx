@@ -1,10 +1,8 @@
 "use client";
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 
 import Webcam from "react-webcam";
 import "@tensorflow/tfjs-backend-webgl";
-
-import React, { useContext } from "react";
 
 import useGesture from "@hooks/useGesture";
 import SignDetectionSetupIndicator from "./SignDetectionSetupIndicator";
@@ -24,7 +22,7 @@ const SignAndCamera = () => {
   useEffect(() => {
     setUserPossibleSign(possibleGestures);
   }, [possibleGestures]);
-  
+
   return (
     <>
       <SignDetectionSetupIndicator

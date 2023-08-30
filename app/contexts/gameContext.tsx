@@ -8,6 +8,7 @@ interface GameContextProviderProps extends useGameLogicReturn {}
 export const GameContext = createContext<GameContextProviderProps>({
   userPossibleSign: null,
   setUserPossibleSign: () => {},
+  gameLettersToGuess: [],
 });
 
 interface GameContextProps {
@@ -15,10 +16,13 @@ interface GameContextProps {
 }
 
 export const GameContextProvider = ({ children }: GameContextProps) => {
-  const { userPossibleSign, setUserPossibleSign } = useGameLogic();
+  const { userPossibleSign, setUserPossibleSign, gameLettersToGuess } =
+    useGameLogic();
 
   return (
-    <GameContext.Provider value={{ userPossibleSign, setUserPossibleSign }}>
+    <GameContext.Provider
+      value={{ userPossibleSign, setUserPossibleSign, gameLettersToGuess }}
+    >
       {children}
     </GameContext.Provider>
   );

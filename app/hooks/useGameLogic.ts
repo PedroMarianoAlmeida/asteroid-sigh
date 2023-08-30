@@ -8,17 +8,21 @@ export interface useGameLogicReturn {
   setUserPossibleSign: (
     possibleSign: useGestureReturn["possibleGestures"]
   ) => void;
+  gameLettersToGuess: useGestureReturn["possibleGestures"];
 }
 
 const useGameLogic = (): useGameLogicReturn => {
   const [userPossibleSign, setUserPossibleSign] =
     useState<useGestureReturn["possibleGestures"]>(null);
 
-  console.log({userPossibleSign});
+  const [gameLettersToGuess, setGameLettersToGuess] = useState<
+    useGestureReturn["possibleGestures"]
+  >([]);
 
   return {
     userPossibleSign,
     setUserPossibleSign,
+    gameLettersToGuess,
   };
 };
 
